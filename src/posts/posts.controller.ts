@@ -1,5 +1,6 @@
 import { PostsService, PostsRo } from './posts.service';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { CreatePostDto } from './dto/create-post.dto';
 import {
   Body,
   Controller,
@@ -22,7 +23,7 @@ export class PostsController {
    */
   @ApiOperation({ summary: '创建文章' })
   @Post()
-  async create(@Body() post) {
+  async create(@Body() post: CreatePostDto) {
     return await this.postsService.create(post);
   }
 
