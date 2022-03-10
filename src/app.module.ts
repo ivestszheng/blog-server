@@ -3,6 +3,7 @@ import { PostsModule } from './posts/posts.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService, ConfigModule } from '@nestjs/config';
 import envConfig from '../config/env';
+import { PostsEntity } from './posts/posts.entity';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import envConfig from '../config/env';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         type: 'mysql', // 数据库类型
-        entities: [], // 数据表实体
+        entities: [PostsEntity], // 数据表实体
         host: configService.get('DB_HOST', 'localhost'), // 主机，默认为localhost
         port: configService.get<number>('DB_PORT', 3306), // 端口号
         username: configService.get('DB_USER', 'root'), // 用户名
