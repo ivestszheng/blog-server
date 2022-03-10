@@ -1,4 +1,5 @@
 import { PostsService, PostsRo } from './posts.service';
+import { ApiTags } from '@nestjs/swagger';
 import {
   Body,
   Controller,
@@ -10,6 +11,7 @@ import {
   Query,
 } from '@nestjs/common';
 
+@ApiTags('文章')
 @Controller('post')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
