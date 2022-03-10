@@ -11,6 +11,8 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalInterceptors(new TransformInterceptor());
 
+  app.useGlobalPipes(new ValidationPipe());
+
   // 设置swagger文档
   const config = new DocumentBuilder()
     .setTitle('博客管理后台')
